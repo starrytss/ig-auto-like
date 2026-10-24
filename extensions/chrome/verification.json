@@ -1,0 +1,1137 @@
+{
+  "version": "0.7.0",
+  "date": "2026-10-22",
+  "passed": 210,
+  "total": 210,
+  "method": "Node vm with mocked Chrome APIs, virtual timers, synthetic DOM geometry, and linked real worker/content scripts",
+  "liveInstagramChromeVerified": false,
+  "browserVisualRenderVerified": false,
+  "features": {
+    "minimumRefreshSeconds": 5,
+    "defaultRefreshSeconds": 60,
+    "defaultLikeSeconds": 2,
+    "minimumLikeSeconds": 1,
+    "includeUnfollowedDefault": true,
+    "includeExistingDefault": true,
+    "defaultMaxLikesPerRefresh": 1,
+    "pageTimerIndependentOfLikeQueue": true,
+    "alwaysRefreshWhenDue": true,
+    "neverWaitForBatchToFinish": true,
+    "overlayPosition": "top-right 24px",
+    "overlayFixedSize": {
+      "width": 320,
+      "height": 300
+    },
+    "overlayCountdownUpdateSeconds": 1,
+    "overlayStartPauseToggle": true,
+    "pausePreservesCountsAndRoundCap": true,
+    "overlayVisibilityPersisted": true,
+    "hidingOverlayDoesNotPause": true,
+    "websiteBrandAssetsBundledLocally": true,
+    "updatedDate": "2026/10/22",
+    "updateNewsUrl": "https://samtss.com/"
+  },
+  "suites": [
+    {
+      "name": "engine",
+      "passed": 91,
+      "total": 91
+    },
+    {
+      "name": "content",
+      "passed": 45,
+      "total": 45
+    },
+    {
+      "name": "popup",
+      "passed": 28,
+      "total": 28
+    },
+    {
+      "name": "dom",
+      "passed": 38,
+      "total": 38
+    },
+    {
+      "name": "integration",
+      "passed": 8,
+      "total": 8
+    }
+  ],
+  "tests": [
+    {
+      "suite": "engine",
+      "name": "預設60秒刷新會排程60000毫秒",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "90秒刷新會排程90000毫秒",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "5秒與3600秒刷新邊界可接受",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "拒絕低於5秒與非整數刷新值",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "兩個範圍選項預設勾選且可明確取消",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "刷新保留秒數設定範圍選項與啟動時間及去重紀錄",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "未勾選時拒絕有Follow按鈕的貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "勾選未追蹤選項後允許Follow貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "未勾選時拒絕推薦貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "勾選未追蹤選項後允許推薦貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "即使勾選所有範圍廣告仍然略過",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "未勾選現有貼文時略過開始前的貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "勾選現有貼文後允許開始前的貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "時間不明僅在明確包含現有貼文時可處理",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "即使勾選現有貼文仍拒絕未來異常時間",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "包含現有貼文也必須有作者網址和主要按鈕",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "已按讚永遠略過避免取消讚",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "自己的貼文與已處理貼文永遠略過",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "Worker採用已保存選項不接受訊息自行放寬未追蹤範圍",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "Worker勾選未追蹤和現有貼文後允許推薦舊貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "Worker不接受訊息自行放寬現有貼文範圍",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "其他分頁或過期文件不能取得點擊許可",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "停止後舊文件預約點擊與排程全部失效",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "結果不明停止且重新開始仍不重試同篇",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "按讚確認僅計數一次且跨刷新保留去重",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "到期前待確認不提前刷新到期後仍會刷新",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "正常文件可以回報診斷並保留略過原因",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "其他分頁和過期文件不能覆寫診斷",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "帳號改變與離開首頁會停止而不刷新",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "瀏覽器重開清除執行狀態保留本機去重",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "每輪按讚上限缺省為1且初始計數為0",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "每輪上限接受1與20篇邊界",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "每輪上限拒絕0超過20及非整數",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "預設每輪僅允許一篇且60秒後不會超額",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "設定三篇會依序允許三次預約並拒絕第四篇",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "配額不能藉由reserve訊息自行放大",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "skipped退回本輪配額後可繼續原隊列下一篇",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "不明結果仍消耗配額且停止不重試",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "重複回報confirmed不會多算本輪和總計",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "重複回報skipped不會把配額扣成負數",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "手動重新整理換文件不會重設本輪配額",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "自動刷新開新輪重設配額並保留總計與去重",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "get狀態可同步總按讚刷新和本輪配額",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "批次計畫只有所屬文件與本輪識別可以建立",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "一次計畫最多保留設定數量並保留輸入順序",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "批次計畫依保存範圍選項排除廣告未追蹤及舊貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "同輪不能用第二次計畫替換或加新貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "預約必須屬於固定隊列且作者與本輪識別正確",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "刷新到期不等待固定批次處理完畢",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "沒有符合條件貼文的批次不會等待未來新貼文",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "未處理隊列不需要批次期限就依刷新時間開新輪",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "略過隊列項目需要本輪所屬文件且不影響已完成次數",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "待確認操作不能被skipQueued刪除",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "略過隊列最後項目不會改變原訂刷新時間",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "未確認按讚不阻擋到期刷新且該篇不再重試",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "按讚間隔接受1秒與3600秒邊界",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "按讚間隔拒絕零負數和非整數",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "預設按讚間隔兩秒且到時可處理下一篇",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "頁面tick到5秒即使還有三篇候選也刷新",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "tick早於刷新時間不重載且回傳原deadline",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "其他分頁過期文件及舊輪tick不能觸發刷新",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "停止後到期tick不能重新啟動刷新",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "到期tick與alarm同時發生不會重複刷新",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "早到的舊alarm不會提前刷新新一輪",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "首頁內容程式無回應仍可刷新並繼續執行",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "首頁載入中暫無帳號資訊不會讓刷新停止",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "刷新仍保留明確驗證限制的停止行為",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "刷新後舊finish不會改變新輪或誤算按讚",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "刷新時間已到即使尚未發tick也不再允許點擊",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "刷新時間已到即使尚未發tick也不再允許新預約",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "浮動面板偏好預設顯示且沿用既有預設設定",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "關閉浮動面板會持久保存且重讀仍隱藏",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "重新開啟浮動面板不會改變工作與計時",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "保存部分設定時會合併且保留顯示偏好",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "非法浮動面板設定不會污染已保存偏好",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "非IG首頁與子框架不能讀寫浮動面板偏好",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "pageState回傳目前分頁識別與工作和顯示設定",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "其他IG分頁只看到自己的待開始狀態而不取得所屬工作",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "控制面板開始會保存最後使用設定且不打開已關閉浮動面板",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "浮動面板可用已保存設定開始且不能冒用其他tabId",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "浮動面板開始仍必須辨識登入帳號與首頁",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "浮動面板不可搶走其他分頁執行中的工作",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "暫停立即取消排程和點擊許可並回傳可再開始狀態",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "暫停未確認項目會記錄不重試並移出剩餘隊列",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "繼續工作保留累計起點本輪配額和剩餘隊列並重算倒數",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "浮動面板開始在暫停時會續跑而不是重設統計",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "其他分頁與過期文件不能暫停所屬工作",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "其他分頁不能接手已暫停工作",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "繼續前帳號改變或顯示驗證仍保持暫停",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "完整停止會清除暫停旗標且保留統計供面板顯示",
+      "passed": true
+    },
+    {
+      "suite": "engine",
+      "name": "關閉或離開已暫停的分頁會結束工作避免無法續跑",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "普通首頁準備且新貼文只按一次",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "現有貼文未勾選時不按且回報原因",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "勾選現有貼文後可處理舊貼文",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "勾選現有貼文時可靠網址且無時間仍可處理",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "取消未追蹤勾選後排除且顯示原因",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "勾選未追蹤後包含Follow及推薦貼文",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "兩項都勾選仍不按廣告",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "已按讚不點擊不取消讚",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "捲動後新增Follow會重新檢查並移出固定隊列",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "等待許可期間停止會取消點擊",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "刷新檢查先停止舊頁面動作",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "結果不明只點一次並停止",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "抓不到貼文回報零篇並建立空批次",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "每輪預設一篇且不選第二篇",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "先回頂端後依幾何位置從上往下選指定篇數",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "最上方不符合條件的貼文會略過再選合格貼文",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "不足設定數量不等待後來新貼文補滿",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "批次成立後失效項目不補入更下面貼文",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "手動重載沿用原批次不可重新選更上方貼文",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "浮動面板按讚刷新與本輪計數在等待及停止後保留",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "相同貼文多個容器不會加入批次",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "首頁尚未載入時浮動面板立即顯示既有累計",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "5秒刷新不受首頁沒有候選或載入等待影響",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "本輪未完成三篇也在5秒準時刷新",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "等待下一次按讚間隔不阻擋刷新timer",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "等待permit跨刷新時間不會送出原貼文點擊",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "permit在deadline後回來且timer未halt時也不點擊",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "停止會取消獨立刷新timer",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "reloadCheck會取消舊頁面timer",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "提前tick回覆新期限時會重掛而非提前刷新",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "每2秒間隔可在一次60秒刷新前完成3篇",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "reserve回報refreshDue時會觸發tick而不點擊",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "permit回報refreshDue時不點擊並立即要求刷新",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "tick因舊文件被拒會停止舊頁面重試",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "浮動面板閒置時顯示開始且可直接啟動",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "暫停後按鈕改開始並可繼續且保留總計",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "已暫停載入仍保留統計並顯示開始",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "浮動面板每秒更新刷新倒數",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "按關閉只隱藏並持久保存不會停止刷新",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "隱藏偏好重載時不會閃現浮動面板",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "控制面板開關透過storage事件即時顯示與隱藏",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "狀態文字長短改變仍沿用相同固定面板結構",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "浮動面板使用擴充功能內的網站標誌",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "開始請求未完成時按鈕鎖定避免重複啟動",
+      "passed": true
+    },
+    {
+      "suite": "content",
+      "name": "非IG首頁不顯示浮動面板或自動開始",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "刷新預設60秒 最低5秒 且按讚範圍預設勾選",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "初始化以儲存設定還原數值與隱藏偏好",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "輸入90秒換算成1分鐘30秒",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "開始時傳送秒數及所有按讚設定",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "取消範圍勾選會傳false",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "閒置輪詢不洗掉未送出的編輯",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "不合法刷新秒數阻止開始",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "執行中還原並鎖定設定但顯示開關仍可用",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "診斷計數與惡意內容僅用文字渲染",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "零貼文顯示載入提示",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "每輪上限預設1且允許1至20篇",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "可傳送每輪3篇",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "不合法每輪數量不會開始",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "品牌使用網站本地Logo並保留日期消息連結",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "到期只顯示0秒不等待批次完成",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "5秒有效且顯示5秒換算",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "按讚預設2秒 最低1秒 0秒拒絕",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "浮動面板預設顯示且開關不會觸發暫停",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "執行中可以隱藏浮動面板",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "浮窗關閉事件會同步顯示開關",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "非local變更不影響顯示開關",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "閒置修改設定會持久保存但不改顯示狀態",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "儲存偏好回應與輪詢不覆蓋剛編輯的設定",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "暫停會呼叫pause並提供繼續按鈕",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "已暫停時開始會unpause而不建立新run",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "暫停時保留本次設定並鎖定避免誤用",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "結束本次後可修改設定且統計保留",
+      "passed": true
+    },
+    {
+      "suite": "popup",
+      "name": "不在IG首頁不能從面板開始",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "普通首頁不需要追蹤中入口",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "導覽可辨識目前帳號",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "一般作者列無追蹤文字仍辨識作者",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "主要按讚工具列可辨識",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 Follow",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 追蹤",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 Follow back",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 追蹤對方",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 回追",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 Requested",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 已發送追蹤邀請",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列排除 已送出邀請",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "圖片內作者列可辨識",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "圖片內追蹤按鈕可辨識",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "沒有header的圖片內作者列可辨識",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "側欄追蹤不影響貼文",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "留言追蹤不影響作者",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "隱藏追蹤不影響貼文",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "畫面更新出現追蹤可重新檢查",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "已按讚會回報liked",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "aria-label放在按鈕而非SVG亦可辨識",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "按鈕與SVG狀態不同時保守視為已按讚",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "中文讚標籤可辨識",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "留言小讚不會變成主貼文按鈕",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "主貼文和留言都有心形仍選主按鈕",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "時間不在連結內仍以唯一貼文網址配對",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "缺少時間仍保留可靠貼文身分",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "多個不同貼文網址不猜身分",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "多個不同發佈時間不猜時間",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "主要日期和留言日期不同仍採作者列日期",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "只有留言時間不套用成主貼文發佈時間",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "留言連結query的時間不套用成主貼文時間",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "作者列內的comment query時間仍不當主日期",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "留言容器內乾淨貼文網址的時間仍不當主日期",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "明確主貼文乾淨連結時間可位於作者列下方",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "共同作者身分歧義會略過",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "贊助標籤仍辨識為廣告",
+      "passed": true
+    },
+    {
+      "suite": "dom",
+      "name": "離開首頁會回報home false",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Widget Start starts real worker and page refresh timer: immediate worker kick",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Widget Start starts real worker and page refresh timer: delayed worker kick",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Widget Start starts real worker and page refresh timer: lost worker kick",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Overlay Pause halts real worker, clears refresh alarm, and Start preserves statistics and remaining cap",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Pause during actual in-flight like retains uncertain cap and immediate Start does not retry clicked post",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Closing widget persists UI preference, notifies popup/storage, and refresh continues at five seconds",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Popup show preference reaches existing content without interrupting its worker-owned deadline",
+      "passed": true
+    },
+    {
+      "suite": "integration",
+      "name": "Real worker alarm and page timer at the same deadline cause one refresh only",
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "START_HERE.txt": "49d6bc1eba3eaa2c3409d9b9c6917ed0038f1cbc2b81b188ef1541e87976f712",
+    "assets/icon-32.png": "44708e451db15c9ec11e96ab267dd48d123745e31cb20fc89190d65b1cd60985",
+    "assets/icon-512.png": "03ea45cd3806f91f9129debc15ba4c8700890a4754232f55833693825e42fd7d",
+    "assets/lab-mark.svg": "d2407c26e530a224fe936b92366433a9b973261c90f07ccfe2bb61fb6b98881a",
+    "background.js": "ea7cc037b25ffb14727d6262ce73c3a0311e4575f463e751cf0ee54b44af52c7",
+    "content.js": "6670144549747c937e3a3b90aad64b637909757136f7b3c4cbb5d532180c4b8d",
+    "core.js": "7ddadc24e7bcd98f3f1265e5dd58551e5f995dd3ee80a084897a6f2499a4cc3a",
+    "dom.js": "56e575eb92e453a26ce33fe20151b5ac40e96e4b795857036d35dc09e141c776",
+    "manifest.json": "5a77111f4611b13f9f4234b3219248d4ae194f37556c658d9df71425bfb8fee7",
+    "popup.css": "65133888debb499d454ded5586657f31af859392dbee25ab82b3a02cb7d7ffa9",
+    "popup.html": "1599d309353455f23ab10474d662a11bc562766499491fb58f1cba4a4e2428dd",
+    "popup.js": "477adff5f3f211564f075ee8df1b56d4638e30e84b16c5a478ff6b9a1bb85bf5"
+  },
+  "limitations": [
+    "No live signed-in Instagram Chrome session was inspected and no real account likes were sent",
+    "Browser visual preview navigation was blocked by the environment URL policy; actual layout rendering was not verified",
+    "Nominal timer intervals can be delayed by browser throttling, loading, freezing, or computer sleep",
+    "Pending likes interrupted by refresh or pause retain an uncertain no-retry history record",
+    "The per-round maximum is an upper bound; the next refresh discards the remaining queue",
+    "Absence of Follow is a visual heuristic rather than an official following list",
+    "Instagram interface changes can break selectors and require a future update",
+    "Counts reflect UI-confirmed likes and refresh requests within the current run"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "山姆蛋 IG 自動刷新按讚",
+  "version": "0.7.0",
+  "minimum_chrome_version": "120",
+  "description": "山姆蛋實驗室 IG 自動刷新按讚 固定右上浮窗含倒數 可開始暫停 可隱藏並記住顯示設定",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "https://instagram.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://instagram.com/*"
+      ],
+      "js": [
+        "core.js",
+        "dom.js",
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "山姆蛋 IG 自動刷新按讚",
+    "default_icon": {
+      "16": "assets/icon-32.png",
+      "32": "assets/icon-32.png"
+    }
+  },
+  "version_name": "0.7.0 (2026/10/22)",
+  "icons": {
+    "16": "assets/icon-32.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-512.png",
+    "128": "assets/icon-512.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/lab-mark.svg"
+      ],
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://instagram.com/*"
+      ]
+    }
+  ]
+}

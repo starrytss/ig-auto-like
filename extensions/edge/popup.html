@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>山姆蛋 IG 小助手 · Edge</title><link rel="stylesheet" href="popup.css"></head>
+<body><main>
+<header class="brand-header">
+ <a class="brand" href="https://samtss.com/" target="_blank" rel="noopener noreferrer"><img src="assets/lab-mark.svg" width="40" height="40" alt="山姆蛋實驗室"><span><strong>山姆蛋實驗室</strong><small>SamEgg Lab</small></span></a>
+ <span class="version-badge">v0.7 · Edge</span>
+</header>
+<div class="page-heading"><div><p class="eyebrow">INSTAGRAM ASSISTANT</p><h1>IG 自動按讚</h1></div><span id="state" class="state idle">待命中</span></div>
+<section class="card command-card" aria-label="執行狀態">
+ <div class="account">目前帳號 <strong id="viewer">尚未辨識</strong></div>
+ <div id="notice" class="notice" role="status" aria-live="polite">正在確認IG 分頁…</div>
+ <div class="stats">
+  <div class="metric countdown"><span>下次刷新</span><strong id="next">—</strong></div>
+  <div class="metric"><span>已按讚</span><strong id="likes">0</strong></div>
+  <div class="metric"><span>已刷新</span><strong id="reloads">0</strong></div>
+ </div>
+ <div class="round-line"><span id="round">本輪已按讚0／1 篇</span><span class="round-label">由上往下處理</span></div>
+ <progress id="roundProgress" max="1" value="0" aria-label="本輪按讚進度"></progress>
+ <div class="actions"><button id="start" class="primary" type="button" disabled>開始執行</button><button id="stop" class="secondary" type="button" disabled>暫停</button></div>
+ <button id="end" class="text-button" type="button" hidden>結束本次並修改設定</button>
+</section>
+<section class="card visibility-card">
+ <label class="switch-row"><span><strong>顯示IG 浮動面板</strong><small>顯示在右上角 關閉面板不會停止執行</small></span><input id="showOverlay" type="checkbox" role="switch" checked></label>
+</section>
+<details class="card settings-card" open>
+ <summary><span>執行設定</span><small>開始前可調整</small></summary>
+ <div class="detail-body">
+  <div class="number-grid">
+   <label for="refresh"><span>刷新間隔</span><div class="number-field"><input id="refresh" type="number" min="5" max="3600" value="60" aria-label="首頁刷新間隔秒"><small>秒</small></div></label>
+   <label for="like"><span>按讚間隔</span><div class="number-field"><input id="like" type="number" min="1" max="3600" value="2" aria-label="按讚間隔秒"><small>秒</small></div></label>
+   <label for="maxLikesPerRefresh"><span>每輪最多</span><div class="number-field"><input id="maxLikesPerRefresh" type="number" min="1" max="20" value="1" aria-label="每次刷新按讚篇數上限"><small>篇</small></div></label>
+  </div>
+  <p id="refresh-equivalent" class="hint">60 秒＝1 分鐘</p>
+  <p id="batch-hint" class="hint policy-hint">到設定時間就刷新 不會等待湊滿篇數<br>從首頁最上方依序檢查符合條件的貼文</p>
+  <label class="option"><input id="includeUnfollowed" type="checkbox" checked><span><strong>也替未追蹤帳號按讚</strong><small>包含推薦貼文 廣告仍會略過</small></span></label>
+  <label class="option"><input id="includeExisting" type="checkbox" checked><span><strong>包含首頁現有未按讚貼文</strong><small>取消勾選時 只處理開始後發佈的新貼文</small></span></label>
+  <p id="settings-hint" class="hint settings-note">確認前一篇結果後才繼續 下一篇預設間隔2 秒</p>
+ </div>
+</details>
+<details class="card diagnostic-section">
+ <summary><span>貼文辨識狀態</span><small id="scanSummary">尚未掃描</small></summary>
+ <div id="diagnostics" class="detail-body" role="status" aria-live="polite"><p class="empty">開始後顯示找到的貼文與略過原因</p></div>
+</details>
+<details class="card log-section">
+ <summary><span>最近紀錄</span><small>僅保存在本機</small></summary>
+ <div id="logs" class="detail-body"><p class="empty">尚未開始</p></div>
+</details>
+<section class="version-info"><strong>v0.7.0 Edge｜更新日期2026/10/22</strong><p>IG 未來更新介面或操作方式後<br>本功能可能暫時無法使用</p><a href="https://samtss.com/" target="_blank" rel="noopener noreferrer">關注山姆蛋實驗室 <span aria-hidden="true">↗</span></a></section>
+<p class="risk">非Meta 官方工具 自動操作仍可能造成帳號限制</p>
+<footer>不讀取密碼 · 不傳送紀錄 · 已按讚貼文略過</footer>
+</main><script src="popup.js"></script></body></html>

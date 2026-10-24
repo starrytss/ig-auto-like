@@ -1,0 +1,162 @@
+{
+  "version": "0.7.0",
+  "browserTarget": "Microsoft Edge desktop 120+",
+  "date": "2026-10-22",
+  "basis": "Chrome extension v0.7.0 with Edge-specific packaging and installation instructions",
+  "engineBehaviorChanged": false,
+  "nativeEdgeRuntimeVerified": false,
+  "liveInstagramEdgeVerified": false,
+  "browserVisualRenderVerified": false,
+  "upstreamMockVerification": {
+    "status": "Previously recorded in the Chrome v0.7.0 package; not rerun as a native Edge session",
+    "sourceArchiveSha256": "f00f3dbb6f7f08f7f3ac1d67084861f541b3bfcf73bbb4caecbeed90229254f5",
+    "passed": 210,
+    "total": 210,
+    "suites": [
+      {
+        "name": "engine",
+        "passed": 91,
+        "total": 91
+      },
+      {
+        "name": "content",
+        "passed": 45,
+        "total": 45
+      },
+      {
+        "name": "popup",
+        "passed": 28,
+        "total": 28
+      },
+      {
+        "name": "dom",
+        "passed": 38,
+        "total": 38
+      },
+      {
+        "name": "integration",
+        "passed": 8,
+        "total": 8
+      }
+    ]
+  },
+  "currentValidation": {
+    "method": "Static manifest checks, file reference checks, JavaScript syntax checks and byte equality against the upstream engine",
+    "checks": [
+      {
+        "name": "Edge-specific manifest metadata and popup branding",
+        "passed": true
+      },
+      {
+        "name": "Manifest V3 and minimum Chromium version preserved",
+        "passed": true
+      },
+      {
+        "name": "No added permissions, host access or update service",
+        "passed": true
+      },
+      {
+        "name": "Every manifest-referenced local resource exists",
+        "passed": true
+      },
+      {
+        "name": "All five JavaScript source files pass Node syntax checking",
+        "passed": true
+      },
+      {
+        "name": "Engine, content, DOM, popup script/CSS and all brand assets are byte-identical to upstream",
+        "passed": true
+      },
+      {
+        "name": "Edge installation guide points to edge://extensions and correct package folder",
+        "passed": true
+      }
+    ],
+    "passed": 7,
+    "total": 7
+  },
+  "features": {
+    "minimumRefreshSeconds": 5,
+    "defaultRefreshSeconds": 60,
+    "defaultLikeSeconds": 2,
+    "minimumLikeSeconds": 1,
+    "includeUnfollowedDefault": true,
+    "includeExistingDefault": true,
+    "defaultMaxLikesPerRefresh": 1,
+    "pageTimerIndependentOfLikeQueue": true,
+    "alwaysRefreshWhenDue": true,
+    "neverWaitForBatchToFinish": true,
+    "overlayPosition": "top-right 24px",
+    "overlayFixedSize": {
+      "width": 320,
+      "height": 300
+    },
+    "overlayCountdownUpdateSeconds": 1,
+    "overlayStartPauseToggle": true,
+    "pausePreservesCountsAndRoundCap": true,
+    "overlayVisibilityPersisted": true,
+    "hidingOverlayDoesNotPause": true,
+    "websiteBrandAssetsBundledLocally": true,
+    "updatedDate": "2026/10/22",
+    "updateNewsUrl": "https://samtss.com/"
+  },
+  "source_sha256": {
+    "START_HERE.txt": "dcf7413f9f7d4dc8085c8831353114898abc0c5769b49a7a2b7a011208f79f05",
+    "assets/icon-32.png": "44708e451db15c9ec11e96ab267dd48d123745e31cb20fc89190d65b1cd60985",
+    "assets/icon-512.png": "03ea45cd3806f91f9129debc15ba4c8700890a4754232f55833693825e42fd7d",
+    "assets/lab-mark.svg": "d2407c26e530a224fe936b92366433a9b973261c90f07ccfe2bb61fb6b98881a",
+    "background.js": "ea7cc037b25ffb14727d6262ce73c3a0311e4575f463e751cf0ee54b44af52c7",
+    "content.js": "6670144549747c937e3a3b90aad64b637909757136f7b3c4cbb5d532180c4b8d",
+    "core.js": "7ddadc24e7bcd98f3f1265e5dd58551e5f995dd3ee80a084897a6f2499a4cc3a",
+    "dom.js": "56e575eb92e453a26ce33fe20151b5ac40e96e4b795857036d35dc09e141c776",
+    "manifest.json": "aeef177de62246228975d4cb79d86720a80d1af15c3007d4f17ef23fdf6b5f49",
+    "popup.css": "65133888debb499d454ded5586657f31af859392dbee25ab82b3a02cb7d7ffa9",
+    "popup.html": "2d8fccdbe97011334953d594e1f337a6965118c2b0e7da6326e30b6e0e030090",
+    "popup.js": "477adff5f3f211564f075ee8df1b56d4638e30e84b16c5a478ff6b9a1bb85bf5"
+  },
+  "limitations": [
+    "No real Microsoft Edge browser or signed-in Instagram account was exercised",
+    "Shared Chromium extension APIs are used; successful native Edge operation still needs testing",
+    "Browser throttling, loading and sleep can delay timers",
+    "Instagram interface changes can require future updates",
+    "Preferences, history and counts are local to the installation and do not automatically synchronize across browsers or computers"
+  ],
+  "upstreamSourceComparison": {
+    "background.js": {
+      "sha256": "ea7cc037b25ffb14727d6262ce73c3a0311e4575f463e751cf0ee54b44af52c7",
+      "byteIdenticalToChromeV07": true
+    },
+    "content.js": {
+      "sha256": "6670144549747c937e3a3b90aad64b637909757136f7b3c4cbb5d532180c4b8d",
+      "byteIdenticalToChromeV07": true
+    },
+    "core.js": {
+      "sha256": "7ddadc24e7bcd98f3f1265e5dd58551e5f995dd3ee80a084897a6f2499a4cc3a",
+      "byteIdenticalToChromeV07": true
+    },
+    "dom.js": {
+      "sha256": "56e575eb92e453a26ce33fe20151b5ac40e96e4b795857036d35dc09e141c776",
+      "byteIdenticalToChromeV07": true
+    },
+    "popup.js": {
+      "sha256": "477adff5f3f211564f075ee8df1b56d4638e30e84b16c5a478ff6b9a1bb85bf5",
+      "byteIdenticalToChromeV07": true
+    },
+    "popup.css": {
+      "sha256": "65133888debb499d454ded5586657f31af859392dbee25ab82b3a02cb7d7ffa9",
+      "byteIdenticalToChromeV07": true
+    },
+    "assets/lab-mark.svg": {
+      "sha256": "d2407c26e530a224fe936b92366433a9b973261c90f07ccfe2bb61fb6b98881a",
+      "byteIdenticalToChromeV07": true
+    },
+    "assets/icon-32.png": {
+      "sha256": "44708e451db15c9ec11e96ab267dd48d123745e31cb20fc89190d65b1cd60985",
+      "byteIdenticalToChromeV07": true
+    },
+    "assets/icon-512.png": {
+      "sha256": "03ea45cd3806f91f9129debc15ba4c8700890a4754232f55833693825e42fd7d",
+      "byteIdenticalToChromeV07": true
+    }
+  }
+}
