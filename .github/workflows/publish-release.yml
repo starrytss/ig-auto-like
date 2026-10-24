@@ -1,0 +1,58 @@
+name: Publish v0.7 release
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-release.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish preserved browser packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p packages
+          gh api "repos/$GH_REPO/contents/downloads/IG_AutoLike_Refresh_v0.7.zip?ref=$GITHUB_SHA" --jq .content | base64 --decode > packages/IG_AutoLike_Refresh_v0.7.zip
+          gh api "repos/$GH_REPO/contents/downloads/IG_AutoLike_Refresh_Edge_v0.7.zip?ref=$GITHUB_SHA" --jq .content | base64 --decode > packages/IG_AutoLike_Refresh_Edge_v0.7.zip
+          unzip -t packages/IG_AutoLike_Refresh_v0.7.zip
+          unzip -t packages/IG_AutoLike_Refresh_Edge_v0.7.zip
+          cat > release-notes.md <<'NOTES'
+          ## 下載方式
+          在下方 **Assets** 點選對應瀏覽器的安裝包
+          - **Chrome**：IG_AutoLike_Refresh_v0.7.zip
+          - **Edge**：IG_AutoLike_Refresh_Edge_v0.7.zip
+
+          **Source code (zip)／Source code (tar.gz)** 是開發原始碼 一般安裝請選上面兩個安裝包之一
+
+          ## 安裝步驟
+          1. 下載並解壓縮對應 ZIP
+          2. 開啟 chrome://extensions 或 edge://extensions
+          3. 開啟「開發人員模式」並選「載入未封裝項目」
+          4. Chrome 選 samegg-ig-like-trial／Edge 選 samegg-ig-like-edge 資料夾
+          5. 選到直接包含 manifest.json 的那一層
+          6. 回到已登入的 IG 首頁 重新整理後開啟擴充功能並按「開始」
+
+          適用桌面 Chrome／Edge 120 以上 Safari 尚未提供可用版本
+
+          ## 版本內容
+          原樣保留網站原有 v0.7.0 安裝包
+          包含定時刷新 每輪篇數 按讚間隔 倒數 統計 開始／暫停與面板隱藏
+
+          已檢查 JavaScript 語法與 manifest 引用檔案
+          尚未完成登入 IG 的 Chrome／Edge 實站驗證
+          非 Meta 官方產品 自動操作可能造成帳號限制
+
+          MIT 開源授權 · SamEgg Lab
+          NOTES
+          if gh release view v0.7.0 >/dev/null 2>&1; then
+            echo "Release v0.7.0 already exists"
+          else
+            gh release create v0.7.0 --target "$GITHUB_SHA" --title "IG Auto Like v0.7.0｜Chrome／Edge 下載" --notes-file release-notes.md --latest
+          fi
+          gh release upload v0.7.0 packages/*.zip
