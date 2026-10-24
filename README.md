@@ -8,8 +8,13 @@
 
 ## 下載與安裝
 
-- [下載 Chrome v0.7 ZIP](https://github.com/starrytss/ig-auto-like/raw/refs/heads/main/downloads/IG_AutoLike_Refresh_v0.7.zip)
-- [下載 Edge v0.7 ZIP](https://github.com/starrytss/ig-auto-like/raw/refs/heads/main/downloads/IG_AutoLike_Refresh_Edge_v0.7.zip)
+前往 [GitHub Releases 最新版本](https://github.com/starrytss/ig-auto-like/releases/latest)
+在 **Assets** 選擇對應瀏覽器的安裝包
+一般安裝請勿選擇 Source code (zip)／Source code (tar.gz)
+公開下載不需要登入 GitHub
+
+- [下載 Chrome v0.7 ZIP](https://github.com/starrytss/ig-auto-like/releases/download/v0.7.0/IG_AutoLike_Refresh_v0.7.zip)
+- [下載 Edge v0.7 ZIP](https://github.com/starrytss/ig-auto-like/releases/download/v0.7.0/IG_AutoLike_Refresh_Edge_v0.7.zip)
 - [工具介紹與操作說明](https://samtss.com/tools/ig-auto-like/)
 
 1. 下載對應 ZIP 並解壓縮
